@@ -6,8 +6,3 @@ if (!function_exists('add_filter')) {
   header('HTTP/1.1 403 Forbidden');
 	exit();
 }
-
-use UserAccessHub\Endpoint\Handshake;
-
-$handshake = new Handshake();
-$handshake->handleRequest();
