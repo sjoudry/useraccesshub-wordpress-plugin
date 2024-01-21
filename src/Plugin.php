@@ -337,6 +337,12 @@ final class Plugin {
    * @since 1.0
    */
   private function registerCommands() {
-    // @todo
+    if (php_sapi_name() == 'cli') {
+      $commands = new Commands();
+      \WP_CLI::add_command('enable-handshake', [$commands, 'enableHandshake']);
+      \WP_CLI::add_command('disable-handshake', [$commands, 'disableHandshake']);
+      \WP_CLI::add_command('regenerate-api-key', [$commands, 'regenerateApiKey']);
+    }
   }
+
 }
