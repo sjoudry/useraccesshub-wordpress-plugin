@@ -2,8 +2,18 @@
 
 namespace UserAccessHub\Endpoint;
 
-class Handshake extends Base {
+/**
+ * SSO Endpoint class.
+ *
+ * @since 1.0
+ */
+class Sso extends Base {
 
+  /**
+   * Handle request.
+   *
+   * @since 1.0
+   */
   public function handleRequest() {
 
     // Load settings.

@@ -2,6 +2,11 @@
 
 namespace UserAccessHub\Endpoint;
 
+/**
+ * Base Endpoint class.
+ *
+ * @since 1.0
+ */
 class Base {
 
   /**
@@ -9,6 +14,8 @@ class Base {
    *
    * @param string[] $errors
    *   The list of errors to add to the response.
+   *
+   * @since 1.0
    */
   protected function errorResponseBody(array $errors = []) {
     $message = [
@@ -20,6 +27,8 @@ class Base {
 
   /**
    * Handshake error response.
+   *
+   * @since 1.0
    */
   protected function errorResponseHandshake() {
     $message = [
@@ -31,6 +40,8 @@ class Base {
 
   /**
    * API Key error response.
+   *
+   * @since 1.0
    */
   protected function errorResponseKey() {
     $message = ['message' => 'The API key is invalid.'];
@@ -39,6 +50,8 @@ class Base {
 
   /**
    * Login error response.
+   *
+   * @since 1.0
    */
   protected function errorResponseLogin() {
     $message = ['message' => 'Login functionality using this method is disabled.'];
@@ -47,6 +60,8 @@ class Base {
 
   /**
    * Message error response.
+   *
+   * @since 1.0
    */
   protected function errorResponseMessage() {
     $message = ['message' => 'The message POST variable is required and needs to be base 64 encoded.'];
@@ -55,6 +70,8 @@ class Base {
 
   /**
    * HTTP method error response.
+   *
+   * @since 1.0
    */
   protected function errorResponseMethod() {
     $message = ['message' => 'The method is not allowed.'];
@@ -63,6 +80,8 @@ class Base {
 
   /**
    * Signature error response.
+   *
+   * @since 1.0
    */
   protected function errorResponseSignature() {
     $message = ['message' => 'The signature is invalid.'];
@@ -71,6 +90,8 @@ class Base {
 
   /**
    * Time error response.
+   *
+   * @since 1.0
    */
   protected function errorResponseTimes() {
     $message = ['message' => 'The login request has expired.'];
@@ -85,6 +106,8 @@ class Base {
    *
    * @return array
    *   A list of role names, keyed by role id.
+   *
+   * @since 1.0
    */
   protected function getRoles(array $configured_roles) {
     global $wp_roles;
@@ -107,6 +130,8 @@ class Base {
    *   The body of the response.
    * @param int $http_code
    *   The response HTTP status code.
+   *
+   * @since 1.0
    */
   protected function response(array $body, int $http_code) {
     switch ($http_code) {
@@ -156,6 +181,8 @@ class Base {
    *
    * @return bool
    *   TRUE if the apikey header value matches key and FALSE otherwise.
+   *
+   * @since 1.0
    */
   protected function validateApiKey(string $api_key) {
     if (isset($_SERVER['HTTP_APIKEY']) && $_SERVER['HTTP_APIKEY'] == $api_key) {
@@ -175,6 +202,8 @@ class Base {
    *
    * @return string[]
    *   The array of errors.
+   *
+   * @since 1.0
    */
   protected function validateBody(string $body = NULL, array $properties = []) {
     $errors = [];
@@ -207,6 +236,8 @@ class Base {
    * @return bool
    *   TRUE if the http method matches the method's passed in and FALSE
    *   otherwise.
+   *
+   * @since 1.0
    */
   protected function validateMethod(array $methods) {
     if (in_array($_SERVER['REQUEST_METHOD'], $methods)) {
@@ -228,6 +259,8 @@ class Base {
    *
    * @return bool
    *   TRUE if the signature header value matches key and FALSE otherwise.
+   *
+   * @since 1.0
    */
   protected function validateSignature(string $data, string $signature, string $public_key) {
     if (openssl_verify($data, $signature, $public_key, OPENSSL_ALGO_SHA384) == 1) {
@@ -245,6 +278,8 @@ class Base {
    *
    * @return string[]
    *   The array of errors.
+   *
+   * @since 1.0
    */
   protected function validateTimes(object $data) {
 

@@ -2,8 +2,18 @@
 
 namespace UserAccessHub\Endpoint;
 
+/**
+ * Handshake Endpoint class.
+ *
+ * @since 1.0
+ */
 class Handshake extends Base {
 
+  /**
+   * Handle request.
+   *
+   * @since 1.0
+   */
   public function handleRequest() {
 
     // Load settings.

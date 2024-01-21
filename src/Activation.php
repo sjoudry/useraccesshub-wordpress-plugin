@@ -2,8 +2,18 @@
 
 namespace UserAccessHub;
 
+/**
+ * Activation class.
+ *
+ * @since 1.0
+ */
 final class Activation {
 
+  /**
+   * Activation.
+   *
+   * @since 1.0
+   */
   public function activation() {
 
     // Handle routing for all custom endpoint URL's.
