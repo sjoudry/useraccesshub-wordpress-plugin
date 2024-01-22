@@ -2,6 +2,8 @@
 
 namespace UserAccessHub\Endpoint;
 
+use UserAccessHub\Plugin;
+
 /**
  * Handshake Endpoint class.
  *
@@ -39,7 +41,7 @@ class Handshake extends Base {
     }
 
     // Set config values.
-    $body = json_decode($body);
+    $body = @json_decode($body);
     $authentication[Plugin::OPTION_PUBLIC_KEY] = $body->public_key;
     $authentication[Plugin::OPTION_SITE_ID] = $body->site_id;
     $authentication[Plugin::OPTION_HANDSHAKE_ENABLED] = '';

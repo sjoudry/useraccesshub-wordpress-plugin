@@ -2,6 +2,8 @@
 
 namespace UserAccessHub\Endpoint;
 
+use UserAccessHub\Plugin;
+
 /**
  * SSO Endpoint class.
  *
