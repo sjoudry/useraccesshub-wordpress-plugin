@@ -10,6 +10,39 @@ namespace UserAccessHub;
 final class Filters {
 
   /**
+   * Authenticate: Handle Login.
+   *
+   * @param \WP_User|bool $user
+   *   The user to reset.
+   * @param \WP_Error $errors
+   *   The errors returned so far from the validation process.
+   *
+   * @return \WP_User|bool
+   *   The user that was passed in.
+   */
+  public function handleReset($user, \WP_Error $errors) {
+    if ($user) {
+
+      // Load settings.
+      $settings = get_option(Plugin::OPTIONS_SETTINGS);
+      $roles = get_option(Plugin::OPTIONS_ROLES);
+      if (!empty($settings[Plugin::OPTION_ENABLED])) {
+
+        // Prevent password retrieval if the user has a role that is managed by
+        // User Access Hub, unless local accounts are allowed.
+        if (empty($roles[Plugin::OPTION_ALLOW_LOCAL])) {
+          $managed_roles = array_intersect($roles[Plugin::OPTION_ROLES], $user->roles);
+          if (count($managed_roles)) {
+            $errors->add('useraccesshub', 'Password retrieval for this user must be done using User Access Hub.');
+          }
+        }
+      }
+    }
+
+    return $user;
+  }
+
+  /**
    * Query Vars.
    *
    * @param array $query_vars

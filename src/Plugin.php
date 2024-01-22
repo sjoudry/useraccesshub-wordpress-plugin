@@ -330,6 +330,7 @@ final class Plugin {
     add_filter('plugin_action_links_' . PLUGIN::SLUG . '/' . PLUGIN::SLUG . '.php', [$filters, 'settingsLink']);
     add_filter('query_vars', [$filters, 'queryVars']);
     add_filter('template_include', [$filters, 'templateInclude']);
+    add_filter('lostpassword_user_data', [$filters, 'handleReset'], 10, 2);
   }
 
   /**
