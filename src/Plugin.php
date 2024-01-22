@@ -317,6 +317,7 @@ final class Plugin {
     $actions = new Actions();
     add_action('admin_init', [$actions, 'registerSettings']);
     add_action('admin_menu', [$actions, 'addSettingsPages']);
+    add_action('authenticate', [$actions, 'handleLogin'], 20, 3);
   }
 
   /**

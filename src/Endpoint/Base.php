@@ -101,7 +101,7 @@ class Base {
   /**
    * Get roles.
    *
-   * @param array $configured_roles
+   * @param array $managed_roles
    *   The roles that are configured for user access hub.
    *
    * @return array
@@ -109,13 +109,13 @@ class Base {
    *
    * @since 1.0
    */
-  protected function getRoles(array $configured_roles) {
+  protected function getRoles(array $managed_roles) {
     global $wp_roles;
 
     // Return the roles of the site.
     $roles = [];
     foreach ($wp_roles->roles as $role_id => $wp_role) {
-      if (in_array($role_id, $configured_roles)) {
+      if (in_array($role_id, $managed_roles)) {
         $roles[$role_id] = $wp_role['name'];
       }
     }

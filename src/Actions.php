@@ -87,6 +87,41 @@ final class Actions {
   }
 
   /**
+   * Authenticate: Handle Login.
+   *
+   * @param \WP_User|\WP_Error|NULL $user
+   *   The user if authenticated.
+   * @param string $username
+   *   The username of the user.
+   * @param string $password
+   *   The password of the user.
+   *
+   * @return \WP_User|\WP_Error|NULL
+   *   The user, an error or NULL depending on the state of the login.
+   */
+  public function handleLogin($user, ?string $username, ?string $password) {
+    if ($user instanceof \WP_User) {
+
+      // Load settings.
+      $settings = get_option(Plugin::OPTIONS_SETTINGS);
+      $roles = get_option(Plugin::OPTIONS_ROLES);
+      if (!empty($settings[Plugin::OPTION_ENABLED])) {
+
+        // Prevent login if the user has a role that is managed by User Access Hub,
+        // unless local accounts are allowed.
+        if (empty($roles[Plugin::OPTION_ALLOW_LOCAL])) {
+          $managed_roles = array_intersect($roles[Plugin::OPTION_ROLES], $user->roles);
+          if (count($managed_roles)) {
+            return new \WP_Error('useraccesshub', 'This user must login using User Access Hub.');
+          }
+        }
+      }
+    }
+
+    return $user;
+  }
+
+  /**
    * Option: Allow Local.
    *
    * @since 1.0

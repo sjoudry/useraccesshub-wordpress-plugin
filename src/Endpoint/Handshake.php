@@ -47,8 +47,8 @@ class Handshake extends Base {
     $authentication[Plugin::OPTION_HANDSHAKE_ENABLED] = '';
     update_option(Plugin::OPTIONS_AUTHENTICATION, $authentication);
 
-    $configured_roles = empty($roles[Plugin::OPTION_ROLES]) ? [] : $roles[Plugin::OPTION_ROLES];
-    $this->response(['roles' => $this->getRoles($configured_roles)], 200);
+    $managed_roles = empty($roles[Plugin::OPTION_ROLES]) ? [] : $roles[Plugin::OPTION_ROLES];
+    $this->response(['roles' => $this->getRoles($managed_roles)], 200);
   }
 
 }

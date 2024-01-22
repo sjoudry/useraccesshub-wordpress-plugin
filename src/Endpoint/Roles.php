@@ -41,8 +41,8 @@ class Roles extends Base {
       $this->errorResponseTimes();
     }
 
-    $configured_roles = empty($roles[Plugin::OPTION_ROLES]) ? [] : $roles[Plugin::OPTION_ROLES];
-    $this->response(['roles' => $this->getRoles($configured_roles)], 200);
+    $managed_roles = empty($roles[Plugin::OPTION_ROLES]) ? [] : $roles[Plugin::OPTION_ROLES];
+    $this->response(['roles' => $this->getRoles($managed_roles)], 200);
   }
 
 }

@@ -77,7 +77,7 @@ class Sso extends Base {
           $this->errorResponseTimes();
         }
 
-        // // Load or create the user.
+        // Load or create the user.
         $user = get_user_by('email', $message->data->email);
         if ($user) {
 
