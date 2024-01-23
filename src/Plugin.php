@@ -318,6 +318,8 @@ final class Plugin {
     add_action('admin_init', [$actions, 'registerSettings']);
     add_action('admin_menu', [$actions, 'addSettingsPages']);
     add_action('authenticate', [$actions, 'handleLogin'], 20, 3);
+    add_action('login_enqueue_scripts', [$actions, 'loginCss']);
+    add_action('login_footer', [$actions, 'loginFooter']);
   }
 
   /**

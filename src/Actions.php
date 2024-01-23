@@ -44,7 +44,7 @@ final class Actions {
     global $submenu;
 
     // Load the icon.
-    $data = file_get_contents(dirname(Plugin::FILE) . '/includes/images/useraccesshub_icon.svg');
+    $data = file_get_contents(dirname(realpath(Plugin::FILE)) . '/includes/images/useraccesshub_icon.svg');
     $image = 'data:image/svg+xml;base64,' . base64_encode($data);
   
     add_menu_page(Plugin::OPTIONS_SETTINGS_NAME, Plugin::NAME, Plugin::OPTIONS_CAPABILITY, Plugin::OPTIONS_SETTINGS_SLUG, [$this, 'settingsPage'], $image);
@@ -98,6 +98,8 @@ final class Actions {
    *
    * @return \WP_User|\WP_Error|NULL
    *   The user, an error or NULL depending on the state of the login.
+   *
+   * @since 1.0
    */
   public function handleLogin($user, ?string $username, ?string $password) {
     if ($user instanceof \WP_User) {
@@ -119,6 +121,43 @@ final class Actions {
     }
 
     return $user;
+  }
+
+  /**
+   * Login CSS.
+   *
+   * @since 1.0
+   */
+  public function loginCss() {
+    $css_path = dirname(realpath(Plugin::FILE)) . '/includes/css/login.css';
+    $css_url = plugin_dir_url(realpath(Plugin::FILE)) . 'includes/css/login.css';
+    wp_enqueue_style('useraccesshub', $css_url, [], filemtime($css_path));
+  }
+
+  /**
+   * Login Message.
+   *
+   * @param string|NULL $message
+   *   The existing login message.
+   *
+   * @return string
+   *   The alterd login message.
+   *
+   * @since 1.0
+   */
+  public function loginFooter() {
+    if (isset($_GET['action'])) {
+      if ($_GET['action'] == 'lostpassword') {
+        print '<div class="useraccesshub_wrapper">';
+        print wp_get_admin_notice('<b>User Access Hub</b><br/><a href="https://www.useraccesshub.com/user/password">Reset password with User Access Hub</a>');
+        print '</div>';
+      }
+    }
+    else {
+      print '<div class="useraccesshub_wrapper">';
+      print wp_get_admin_notice('<b>User Access Hub</b><br/><a href="https://www.useraccesshub.com/user/login">Login with User Access Hub</a>');
+      print '</div>';
+    }
   }
 
   /**
