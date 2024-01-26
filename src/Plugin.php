@@ -314,9 +314,11 @@ final class Plugin {
    * @since 1.0
    */
   private function registerActions() {
+    $settings = new Settings();
+    add_action('admin_init', [$settings, 'registerSettings']);
+    add_action('admin_menu', [$settings, 'addSettingsPages']);
+
     $actions = new Actions();
-    add_action('admin_init', [$actions, 'registerSettings']);
-    add_action('admin_menu', [$actions, 'addSettingsPages']);
     add_action('authenticate', [$actions, 'handleLogin'], 20, 3);
     add_action('login_enqueue_scripts', [$actions, 'loginCss']);
     add_action('login_footer', [$actions, 'loginFooter']);
