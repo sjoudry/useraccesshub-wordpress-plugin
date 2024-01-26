@@ -22,7 +22,7 @@ final class Activation {
 
     // Add some default options.
     $options = [
-      Plugin::OPTION_HANDHSAKE_ENABLED => 'on',
+      Plugin::OPTION_HANDSHAKE_ENABLED => 'on',
       Plugin::OPTION_API_KEY => Plugin::getInstance()->generateApiKey(),
     ];
     add_option(Plugin::OPTIONS_AUTHENTICATION, $options);
