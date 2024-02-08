@@ -43,8 +43,12 @@ final class Settings {
   public function addSettingsPages() {
     global $submenu;
 
+    require_once ABSPATH . 'wp-admin/includes/class-wp-filesystem-base.php';
+    require_once ABSPATH . 'wp-admin/includes/class-wp-filesystem-direct.php';
+
     // Load the icon.
-    $data = file_get_contents(dirname(realpath(Plugin::FILE)) . '/includes/images/useraccesshub_icon.svg');
+    $filesystem = new \WP_Filesystem_Direct(TRUE);
+    $data = $filesystem->get_contents(dirname(realpath(Plugin::FILE)) . '/includes/images/useraccesshub_icon.svg');
     $image = 'data:image/svg+xml;base64,' . base64_encode($data);
   
     add_menu_page(Plugin::OPTIONS_SETTINGS_NAME, Plugin::NAME, Plugin::OPTIONS_CAPABILITY, Plugin::OPTIONS_SETTINGS_SLUG, [$this, 'settingsPage'], $image);

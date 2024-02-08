@@ -62,7 +62,7 @@ class Sso extends Base {
         }
 
         $message = json_decode($message);
-        $data = json_encode($message->data);
+        $data = wp_json_encode($message->data);
         $properties = ['email', 'roles', 'created', 'expiry'];
         if ($errors = $this->validateBody($data, $properties)) {
           $this->errorResponseBody($errors);
