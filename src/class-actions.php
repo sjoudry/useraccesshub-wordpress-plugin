@@ -18,16 +18,14 @@ final class Actions {
 	/**
 	 * Authenticate: Handle Login.
 	 *
-	 * @param \WP_User|\WP_Error|NULL $user     The user if authenticated.
-	 * @param string                  $username The username of the user.
-	 * @param string                  $password The password of the user.
+	 * @param \WP_User|\WP_Error|NULL $user The user if authenticated.
 	 *
 	 * @return \WP_User|\WP_Error|NULL
 	 *   The user, an error or NULL depending on the state of the login.
 	 *
 	 * @since 1.0
 	 */
-	public function handle_login( $user, ?string $username, ?string $password ) {
+	public function handle_login( $user ) {
 		if ( $user instanceof \WP_User ) {
 
 			// Load settings.
@@ -73,12 +71,18 @@ final class Actions {
 		if ( isset( $_GET['action'] ) ) {
 			if ( 'lostpassword' === $_GET['action'] ) {
 				print '<div class="useraccesshub_wrapper">';
-				print wp_get_admin_notice( '<b>User Access Hub</b><br/><a href="https://www.useraccesshub.com/user/password">Reset password with User Access Hub</a>' );
+				print '<div class="notice"><p>';
+				print '<b>User Access Hub</b><br/>';
+				print '<a href="https://www.useraccesshub.com/user/password">Reset password with User Access Hub</a>';
+				print '</p></div>';
 				print '</div>';
 			}
 		} else {
 			print '<div class="useraccesshub_wrapper">';
-			print wp_get_admin_notice( '<b>User Access Hub</b><br/><a href="https://www.useraccesshub.com/user/login">Login with User Access Hub</a>' );
+			print '<div class="notice"><p>';
+			print '<b>User Access Hub</b><br/>';
+			print '<a href="https://www.useraccesshub.com/user/login">Login with User Access Hub</a>';
+			print '</p></div>';
 			print '</div>';
 		}
 

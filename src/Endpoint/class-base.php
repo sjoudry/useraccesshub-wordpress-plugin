@@ -175,7 +175,7 @@ class Base {
 			$body = wp_json_encode( $body );
 
 			// Compress only if client request allows gzip.
-			if ( isset( $_SERVER['HTTP_ACCEPT_ENCODING'] ) && strpos( $_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip' ) !== false ) {
+			if ( isset( $_SERVER['HTTP_ACCEPT_ENCODING'] ) && strpos( sanitize_text_field( wp_unslash( $_SERVER['HTTP_ACCEPT_ENCODING'] ) ), 'gzip' ) !== false ) {
 				$body = gzencode( $body, 9, FORCE_GZIP );
 				header( 'Content-Encoding: gzip' );
 			}
@@ -219,7 +219,7 @@ class Base {
 		if ( empty( $body ) ) {
 			$errors[] = 'Body is missing and is required.';
 		} else {
-			$json_body = @json_decode( $body );
+			$json_body = json_decode( $body );
 			if ( json_last_error() !== JSON_ERROR_NONE ) {
 				$errors[] = 'Invalid JSON: ' . json_last_error_msg();
 			}
@@ -244,7 +244,7 @@ class Base {
 	 * @since 1.0
 	 */
 	protected function validate_method( array $methods ) {
-		if ( in_array( $_SERVER['REQUEST_METHOD'], $methods, true ) ) {
+		if ( isset( $_SERVER['REQUEST_METHOD'] ) && in_array( $_SERVER['REQUEST_METHOD'], $methods, true ) ) {
 			return true;
 		}
 

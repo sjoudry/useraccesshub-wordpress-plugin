@@ -141,7 +141,7 @@ final class Settings {
 			if ( $role_id === $default_role ) {
 				print ' selected="selected"';
 			}
-			print '>' . $wp_role['name'] . '</option>';
+			print '>' . esc_html( $wp_role['name'] ) . '</option>';
 		}
 		print '</select>';
 		print '<p class="description">Select which role should be considered the default.</p>';
@@ -188,7 +188,7 @@ final class Settings {
 		$options    = get_option( Plugin::OPTIONS_AUTHENTICATION );
 		$public_key = empty( $options[ Plugin::OPTION_PUBLIC_KEY ] ) ? '' : $options[ Plugin::OPTION_PUBLIC_KEY ];
 
-		print '<textarea id="' . esc_attr( Plugin::OPTION_PUBLIC_KEY ) . '" name="' . esc_attr( Plugin::OPTIONS_AUTHENTICATION . '[' . Plugin::OPTION_PUBLIC_KEY . ']' ) . '" disabled="disabled" style="resize:none" cols="40" rows="5" class="large-text">' . $public_key . '</textarea>';
+		print '<textarea id="' . esc_attr( Plugin::OPTION_PUBLIC_KEY ) . '" name="' . esc_attr( Plugin::OPTIONS_AUTHENTICATION . '[' . Plugin::OPTION_PUBLIC_KEY . ']' ) . '" disabled="disabled" style="resize:none" cols="40" rows="5" class="large-text">' . esc_html( $public_key ) . '</textarea>';
 		print '<p class="description">The public key is set during the handshake process between the User Access Hub and this site and is used for all communication between this site and the User Access Hub.</p>';
 	}
 
@@ -221,7 +221,7 @@ final class Settings {
 			if ( in_array( $role_id, $roles, true ) ) {
 				print ' checked="checked"';
 			}
-			print ' /><label for="' . esc_attr( Plugin::OPTION_ROLES . '-' . $role_id ) . '">' . $wp_role['name'] . '</label></p>';
+			print ' /><label for="' . esc_attr( Plugin::OPTION_ROLES . '-' . $role_id ) . '">' . esc_html( $wp_role['name'] ) . '</label></p>';
 		}
 		print '<p class="description">Select which roles should have SSO login enabled from the User Access Hub. All roles not selected will still be able to login using the site login form.</p>';
 	}

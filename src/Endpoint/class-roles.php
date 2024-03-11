@@ -28,7 +28,7 @@ class Roles extends Base {
 		$authentication = get_option( Plugin::OPTIONS_AUTHENTICATION );
 		$roles          = get_option( Plugin::OPTIONS_ROLES );
 
-    if ( ! $this->validate_method( array( 'POST' ) ) ) {
+		if ( ! $this->validate_method( array( 'POST' ) ) ) {
 			$this->error_response_method();
 		}
 
@@ -37,7 +37,7 @@ class Roles extends Base {
 		}
 
 		$body      = file_get_contents( 'php://input' );
-		$signature = base64_decode( $_SERVER['HTTP_SIGNATURE'] );
+		$signature = base64_decode( sanitize_text_field( wp_unslash( $_SERVER['HTTP_SIGNATURE'] ) ) );
 		if ( ! $signature || ! $this->validate_signature( $body, $signature, $authentication[ Plugin::OPTION_PUBLIC_KEY ] ) ) {
 			$this->error_response_signature();
 		}

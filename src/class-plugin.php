@@ -321,7 +321,7 @@ final class Plugin {
 		add_action( 'admin_menu', array( $settings, 'add_settings_pages' ) );
 
 		$actions = new Actions();
-		add_action( 'authenticate', array( $actions, 'handle_login' ), 20, 3 );
+		add_action( 'authenticate', array( $actions, 'handle_login' ), 20 );
 		add_action( 'login_enqueue_scripts', array( $actions, 'login_css' ) );
 		add_action( 'login_footer', array( $actions, 'login_footer' ) );
 	}
