@@ -295,7 +295,7 @@ final class Plugin {
    */
   private function registerActivationHook() {
     $activation = new Activation();
-    register_activation_hook(Plugin::FILE, [$activation, 'activation']);
+    register_activation_hook(realpath(Plugin::FILE), [$activation, 'activation']);
   }
 
   /**
@@ -305,7 +305,7 @@ final class Plugin {
    */
   private function registerDeacticationHook() {
     $deactivation = new Deactivation();
-    register_deactivation_hook(Plugin::FILE, [$deactivation, 'deactivation']);
+    register_deactivation_hook(realpath(Plugin::FILE), [$deactivation, 'deactivation']);
   }
 
   /**
