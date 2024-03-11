@@ -1,2 +1,7 @@
 <?php
-// silence is golden.
+/**
+ * Silence is golden
+ *
+ * @package useraccesshub
+ * @since 1.0
+ */

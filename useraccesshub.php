@@ -9,16 +9,19 @@
  * License:      GPL2
  * License URI:  https://www.gnu.org/licenses/gpl-2.0.html
  * Requires PHP: 7
-*/
+ *
+ * @package useraccesshub
+ * @since 1.0
+ */
 
 // If this file is called directly, abort.
-if (!defined('WPINC')) {
-  die;
+if ( ! defined( 'WPINC' ) ) {
+	die;
 }
 
-include_once __DIR__ . '/autoload.php';
+require_once __DIR__ . '/autoload.php';
 
 use UserAccessHub\Plugin;
 
-$plugin = Plugin::getInstance();
-$plugin->init();
+$useraccesshub = Plugin::get_instance();
+$useraccesshub->init();

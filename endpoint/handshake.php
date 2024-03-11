@@ -1,11 +1,17 @@
 <?php
+/**
+ * Custom Slug: Handshake
+ *
+ * @package useraccesshub
+ * @since 1.0
+ */
 
 // If this file is called directly, abort.
-if (!defined('WPINC')) {
-  die;
+if ( ! defined( 'WPINC' ) ) {
+	die;
 }
 
 use UserAccessHub\Endpoint\Handshake;
 
 $handshake = new Handshake();
-$handshake->handleRequest();
+$handshake->handle_request();
