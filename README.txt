@@ -4,8 +4,10 @@ Donate link: https://www.useraccesshub.com/
 Tags: admin, administration, authentication
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Stable Tag: 1.0.0
+Tested up to: 6.4
 
-The User Access Hub is a service that allows administrators to manage users, user access, and roles across a network of CMS sites and will significantly simplify the administrative tasks associated with managing multiple websites.
+The User Access Hub is a service that allows administrators to manage users, user access, and roles across a network of CMS sites.
 
 == Description ==
 
