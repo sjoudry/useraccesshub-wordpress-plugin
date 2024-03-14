@@ -6,6 +6,7 @@ License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Stable Tag: 1.0.0
 Tested up to: 6.4
+Requires PHP: 7.0
 
 The User Access Hub is a service that allows administrators to manage users, user access, and roles across a network of CMS sites.
 
