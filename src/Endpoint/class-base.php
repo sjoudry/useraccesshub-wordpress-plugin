@@ -172,15 +172,7 @@ class Base {
 
 		if ( count( $body ) ) {
 			header( 'Content-Type: application/json' );
-			$body = wp_json_encode( $body );
-
-			// Compress only if client request allows gzip.
-			if ( isset( $_SERVER['HTTP_ACCEPT_ENCODING'] ) && strpos( sanitize_text_field( wp_unslash( $_SERVER['HTTP_ACCEPT_ENCODING'] ) ), 'gzip' ) !== false ) {
-				$body = gzencode( $body, 9, FORCE_GZIP );
-				header( 'Content-Encoding: gzip' );
-			}
-
-			print $body;
+			print wp_json_encode( $body );
 		}
 
 		exit();
