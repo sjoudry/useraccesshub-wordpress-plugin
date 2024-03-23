@@ -41,7 +41,7 @@ class Handshake extends Base {
 			$this->error_response_key();
 		}
 
-		$body   = file_get_contents( 'php://input' );
+		$body   = wp_kses( file_get_contents( 'php://input' ), array() );
 		$errors = $this->validate_body( $body, array( 'public_key', 'site_id' ) );
 		if ( $errors ) {
 			$this->error_response_body( $errors );

@@ -51,7 +51,7 @@ class Sso extends Base {
 					if ( isset( $_POST['message'] ) ) {
 
 						// Message is required.
-						$message = sanitize_text_field( wp_unslash( $_POST['message'] ) );
+						$message = wp_kses( wp_unslash( $_POST['message'] ), array() );
 						if ( ! $message ) {
 							$this->error_response_message();
 						}

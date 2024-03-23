@@ -36,8 +36,8 @@ class Roles extends Base {
 			$this->error_response_signature();
 		}
 
-		$body      = file_get_contents( 'php://input' );
-		$signature = base64_decode( sanitize_text_field( wp_unslash( $_SERVER['HTTP_SIGNATURE'] ) ) );
+		$body      = wp_kses( file_get_contents( 'php://input' ), array() );
+		$signature = base64_decode( wp_kses( wp_unslash( $_SERVER['HTTP_SIGNATURE'] ), array() ) );
 		if ( ! $signature || ! $this->validate_signature( $body, $signature, $authentication[ Plugin::OPTION_PUBLIC_KEY ] ) ) {
 			$this->error_response_signature();
 		}
