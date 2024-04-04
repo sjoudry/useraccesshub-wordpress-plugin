@@ -3,7 +3,7 @@
  * Settings
  *
  * @package useraccesshub
- * @since 1.0
+ * @since 1.0.0
  */
 
 namespace UserAccessHub;
@@ -11,14 +11,14 @@ namespace UserAccessHub;
 /**
  * Settings class.
  *
- * @since 1.0
+ * @since 1.0.0
  */
 final class Settings {
 
 	/**
 	 * Settings: Register Settings and Options.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	public function register_settings() {
 		register_setting( Plugin::OPTIONS_AUTHENTICATION, Plugin::OPTIONS_AUTHENTICATION );
@@ -44,7 +44,7 @@ final class Settings {
 	/**
 	 * Menu: Add Settings Pages.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	public function add_settings_pages() {
 		global $submenu;
@@ -68,7 +68,7 @@ final class Settings {
 	/**
 	 * Settings: Authentication Top Content.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	public function authentication_content() {
 		print '<p>The following data is for informational purposes and none of these values can be modified here.</p>';
@@ -77,7 +77,7 @@ final class Settings {
 	/**
 	 * Settings: Authentication Page.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	public function authentication_page() {
 
@@ -99,7 +99,7 @@ final class Settings {
 	/**
 	 * Option: Allow Local.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	public function option_allow_local() {
 		$options = get_option( Plugin::OPTIONS_ROLES );
@@ -114,7 +114,7 @@ final class Settings {
 	/**
 	 * Option: API Key.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	public function option_api_key() {
 		$options = get_option( Plugin::OPTIONS_AUTHENTICATION );
@@ -127,7 +127,7 @@ final class Settings {
 	/**
 	 * Option: Default Role.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	public function option_default_role() {
 		global $wp_roles;
@@ -150,7 +150,7 @@ final class Settings {
 	/**
 	 * Option: Enabled.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	public function option_enabled() {
 		$options = get_option( Plugin::OPTIONS_SETTINGS );
@@ -166,7 +166,7 @@ final class Settings {
 	/**
 	 * Option: Handshake Enabled.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	public function option_handshake_enabled() {
 		$options = get_option( Plugin::OPTIONS_AUTHENTICATION );
@@ -182,7 +182,7 @@ final class Settings {
 	/**
 	 * Option: Public Key.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	public function option_public_key() {
 		$options    = get_option( Plugin::OPTIONS_AUTHENTICATION );
@@ -195,7 +195,7 @@ final class Settings {
 	/**
 	 * Option: Redirect.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	public function option_redirect() {
 		$options  = get_option( Plugin::OPTIONS_SETTINGS );
@@ -208,7 +208,7 @@ final class Settings {
 	/**
 	 * Option: Roles.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	public function option_roles() {
 		global $wp_roles;
@@ -229,7 +229,7 @@ final class Settings {
 	/**
 	 * Option: Site ID.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	public function option_site_id() {
 		$options = get_option( Plugin::OPTIONS_AUTHENTICATION );
@@ -242,7 +242,7 @@ final class Settings {
 	/**
 	 * Settings: Roles Top Content.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	public function roles_content() {
 		print '<p>The following are role specific settings for this plugin.</p>';
@@ -251,7 +251,7 @@ final class Settings {
 	/**
 	 * Settings: Roles Page.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	public function roles_page() {
 
@@ -274,7 +274,7 @@ final class Settings {
 	/**
 	 * Settings: Settings Top Content.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	public function settings_content() {
 		print '<p>The following are general settings for this plugin.</p>';
@@ -283,7 +283,7 @@ final class Settings {
 	/**
 	 * Settings: Settings Page.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	public function settings_page() {
 

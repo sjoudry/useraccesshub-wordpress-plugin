@@ -3,7 +3,7 @@
  * Plugin
  *
  * @package useraccesshub
- * @since 1.0
+ * @since 1.0.0
  */
 
 namespace UserAccessHub;
@@ -11,7 +11,7 @@ namespace UserAccessHub;
 /**
  * Plugin class.
  *
- * @since 1.0
+ * @since 1.0.0
  */
 final class Plugin {
 
@@ -20,7 +20,7 @@ final class Plugin {
 	 *
 	 * @var string
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	const FILE = __DIR__ . '/../useraccesshub.php';
 
@@ -29,7 +29,7 @@ final class Plugin {
 	 *
 	 * @var string
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	const NAME = 'User Access Hub';
 
@@ -38,7 +38,7 @@ final class Plugin {
 	 *
 	 * @var string
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	const OPTION_ALLOW_LOCAL = 'useraccesshub_allow_local';
 
@@ -47,7 +47,7 @@ final class Plugin {
 	 *
 	 * @var string
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	const OPTION_API_KEY = 'useraccesshub_api_key';
 
@@ -56,7 +56,7 @@ final class Plugin {
 	 *
 	 * @var string
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	const OPTION_DEFAULT_ROLE = 'useraccesshub_default_role';
 
@@ -65,7 +65,7 @@ final class Plugin {
 	 *
 	 * @var string
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	const OPTION_ENABLED = 'useraccesshub_enabled';
 
@@ -74,7 +74,7 @@ final class Plugin {
 	 *
 	 * @var string
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	const OPTION_HANDSHAKE_ENABLED = 'useraccesshub_handshake_enabled';
 
@@ -83,7 +83,7 @@ final class Plugin {
 	 *
 	 * @var string
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	const OPTION_PUBLIC_KEY = 'useraccesshub_public_key';
 
@@ -92,7 +92,7 @@ final class Plugin {
 	 *
 	 * @var string
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	const OPTION_REDIRECT = 'useraccesshub_redirect';
 
@@ -101,7 +101,7 @@ final class Plugin {
 	 *
 	 * @var string
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	const OPTION_ROLES = 'useraccesshub_roles';
 
@@ -110,7 +110,7 @@ final class Plugin {
 	 *
 	 * @var string
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	const OPTION_SITE_ID = 'useraccesshub_site_id';
 
@@ -119,7 +119,7 @@ final class Plugin {
 	 *
 	 * @var string
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	const OPTIONS_CAPABILITY = 'manage_options';
 
@@ -128,7 +128,7 @@ final class Plugin {
 	 *
 	 * @var string
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	const OPTIONS_AUTHENTICATION = 'useraccesshub_authentication';
 
@@ -137,7 +137,7 @@ final class Plugin {
 	 *
 	 * @var string
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	const OPTIONS_AUTHENTICATION_NAME = 'Authentication';
 
@@ -146,7 +146,7 @@ final class Plugin {
 	 *
 	 * @var string
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	const OPTIONS_AUTHENTICATION_SLUG = 'useraccesshub-authentication';
 
@@ -155,7 +155,7 @@ final class Plugin {
 	 *
 	 * @var string
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	const OPTIONS_ROLES = 'useraccesshub_roles';
 
@@ -164,7 +164,7 @@ final class Plugin {
 	 *
 	 * @var string
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	const OPTIONS_ROLES_NAME = 'Roles';
 
@@ -173,7 +173,7 @@ final class Plugin {
 	 *
 	 * @var string
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	const OPTIONS_ROLES_SLUG = 'useraccesshub-roles';
 
@@ -182,7 +182,7 @@ final class Plugin {
 	 *
 	 * @var string
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	const OPTIONS_SETTINGS = 'useraccesshub_settings';
 
@@ -191,7 +191,7 @@ final class Plugin {
 	 *
 	 * @var string
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	const OPTIONS_SETTINGS_NAME = 'Settings';
 
@@ -200,7 +200,7 @@ final class Plugin {
 	 *
 	 * @var string
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	const OPTIONS_SETTINGS_SLUG = 'useraccesshub';
 
@@ -209,7 +209,7 @@ final class Plugin {
 	 *
 	 * @var string
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	const QUERY_ENDPOINT = 'uah_endpoint';
 
@@ -218,7 +218,7 @@ final class Plugin {
 	 *
 	 * @var string
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	const SLUG = 'useraccesshub';
 
@@ -227,23 +227,23 @@ final class Plugin {
 	 *
 	 * @var string
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
-	const VERSION = '1.0';
+	const VERSION = '1.0.1';
 
 	/**
 	 * The Plugin singleton.
 	 *
 	 * @var \UserAccessHub\Plugin
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
-	private static ?Plugin $instance = null;
+	private static $instance = null;
 
 	/**
 	 * Get Plugin Instance.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	public static function get_instance() {
 		if ( empty( self::$instance ) ) {
@@ -261,7 +261,7 @@ final class Plugin {
 	 *
 	 * @return string The generated key.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	public function generate_api_key( int $length = 255, string $chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz' ) {
 		$key  = '';
@@ -280,7 +280,7 @@ final class Plugin {
 	 *
 	 * Run all of the hooks, actions and filters to fully set up the plugin.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	public function init() {
 		$this->register_activation_hook();
@@ -293,7 +293,7 @@ final class Plugin {
 	/**
 	 * Register Activation Hook.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	private function register_activation_hook() {
 		$activation = new Activation();
@@ -303,7 +303,7 @@ final class Plugin {
 	/**
 	 * Register Deactivation Hook.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	private function register_deactication_hook() {
 		$deactivation = new Deactivation();
@@ -313,7 +313,7 @@ final class Plugin {
 	/**
 	 * Register Actions.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	private function register_actions() {
 		$settings = new Settings();
@@ -329,7 +329,7 @@ final class Plugin {
 	/**
 	 * Register Filters.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	private function register_filters() {
 		$filters = new Filters();
@@ -342,7 +342,7 @@ final class Plugin {
 	/**
 	 * Register WP CLI Commands.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	private function register_commands() {
 		if ( php_sapi_name() === 'cli' ) {

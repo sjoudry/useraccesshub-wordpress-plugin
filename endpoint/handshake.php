@@ -3,7 +3,7 @@
  * Custom Slug: Handshake
  *
  * @package useraccesshub
- * @since 1.0
+ * @since 1.0.0
  */
 
 // If this file is called directly, abort.

@@ -3,7 +3,7 @@
  * Commands
  *
  * @package useraccesshub
- * @since 1.0
+ * @since 1.0.0
  */
 
 namespace UserAccessHub;
@@ -11,14 +11,14 @@ namespace UserAccessHub;
 /**
  * Commands class.
  *
- * @since 1.0
+ * @since 1.0.0
  */
 final class Commands {
 
 	/**
 	 * Enable the handshake endpoint for User Access Hub.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	public function enable_handshake() {
 		$authentication                                     = get_option( Plugin::OPTIONS_AUTHENTICATION );
@@ -30,7 +30,7 @@ final class Commands {
 	/**
 	 * Disable the handshake endpoint for User Access Hub.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	public function disable_handshake() {
 		$authentication                                     = get_option( Plugin::OPTIONS_AUTHENTICATION );
@@ -42,7 +42,7 @@ final class Commands {
 	/**
 	 * Re-generate API Key used for the handshake endpoint for User Access Hub.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	public function regenerate_api_key() {
 		$authentication                           = get_option( Plugin::OPTIONS_AUTHENTICATION );

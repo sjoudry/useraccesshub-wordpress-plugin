@@ -3,7 +3,7 @@
  * Filters
  *
  * @package useraccesshub
- * @since 1.0
+ * @since 1.0.0
  */
 
 namespace UserAccessHub;
@@ -11,7 +11,7 @@ namespace UserAccessHub;
 /**
  * Filters class.
  *
- * @since 1.0
+ * @since 1.0.0
  */
 final class Filters {
 
@@ -22,6 +22,8 @@ final class Filters {
 	 * @param \WP_Error     $errors The errors returned so far from the validation process.
 	 *
 	 * @return \WP_User|bool The user that was passed in.
+   *
+   * @since 1.0.0
 	 */
 	public function handle_reset( $user, \WP_Error $errors ) {
 		if ( $user ) {
@@ -51,7 +53,7 @@ final class Filters {
 	 *
 	 * @return array The modified query vars.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	public function query_vars( array $query_vars ) {
 		$query_vars[] = Plugin::QUERY_ENDPOINT;
@@ -66,7 +68,7 @@ final class Filters {
 	 *
 	 * @return array The modified action links.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	public function settings_link( array $action_links ) {
 		$action_links[] = '<a href="' . get_admin_url() . 'admin.php?page=' . Plugin::SLUG . '">' . Plugin::OPTIONS_SETTINGS_NAME . '</a>';
@@ -81,7 +83,7 @@ final class Filters {
 	 *
 	 * @return string The modified template.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	public function template_include( string $template ) {
 		$endpoint = get_query_var( Plugin::QUERY_ENDPOINT );

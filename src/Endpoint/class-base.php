@@ -3,7 +3,7 @@
  * Endpoint: Base
  *
  * @package useraccesshub
- * @since 1.0
+ * @since 1.0.0
  */
 
 namespace UserAccessHub\Endpoint;
@@ -11,7 +11,7 @@ namespace UserAccessHub\Endpoint;
 /**
  * Base Endpoint class.
  *
- * @since 1.0
+ * @since 1.0.0
  */
 class Base {
 
@@ -20,7 +20,7 @@ class Base {
 	 *
 	 * @param string[] $errors The list of errors to add to the response.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	protected function error_response_body( array $errors = array() ) {
 		$message = array(
@@ -33,7 +33,7 @@ class Base {
 	/**
 	 * Handshake error response.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	protected function error_response_handshake() {
 		$message = array(
@@ -46,7 +46,7 @@ class Base {
 	/**
 	 * API Key error response.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	protected function error_response_key() {
 		$message = array(
@@ -58,7 +58,7 @@ class Base {
 	/**
 	 * Login error response.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	protected function error_response_login() {
 		$message = array(
@@ -70,7 +70,7 @@ class Base {
 	/**
 	 * Message error response.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	protected function error_response_message() {
 		$message = array(
@@ -82,7 +82,7 @@ class Base {
 	/**
 	 * HTTP method error response.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	protected function error_response_method() {
 		$message = array(
@@ -94,7 +94,7 @@ class Base {
 	/**
 	 * Signature error response.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	protected function error_response_signature() {
 		$message = array(
@@ -106,7 +106,7 @@ class Base {
 	/**
 	 * Time error response.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	protected function error_response_times() {
 		$message = array(
@@ -122,7 +122,7 @@ class Base {
 	 *
 	 * @return array A list of role names, keyed by role id.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	protected function get_roles( array $managed_roles ) {
 		global $wp_roles;
@@ -144,7 +144,7 @@ class Base {
 	 * @param array $body      The body of the response.
 	 * @param int   $http_code The response HTTP status code.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	protected function response( array $body, int $http_code ) {
 		switch ( $http_code ) {
@@ -185,7 +185,7 @@ class Base {
 	 *
 	 * @return bool TRUE if the apikey header value matches key and FALSE otherwise.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	protected function validate_api_key( string $api_key ) {
 		if ( isset( $_SERVER['HTTP_APIKEY'] ) && $_SERVER['HTTP_APIKEY'] === $api_key ) {
@@ -203,7 +203,7 @@ class Base {
 	 *
 	 * @return string[] The array of errors.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	protected function validate_body( string $body = null, array $properties = array() ) {
 		$errors = array();
@@ -233,7 +233,7 @@ class Base {
 	 *
 	 * @return bool TRUE if the http method matches the method's passed in and FALSE otherwise.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	protected function validate_method( array $methods ) {
 		if ( isset( $_SERVER['REQUEST_METHOD'] ) && in_array( $_SERVER['REQUEST_METHOD'], $methods, true ) ) {
@@ -252,7 +252,7 @@ class Base {
 	 *
 	 * @return bool TRUE if the signature header value matches key and FALSE otherwise.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	protected function validate_signature( string $data, string $signature, string $public_key ) {
 		if ( openssl_verify( $data, $signature, $public_key, OPENSSL_ALGO_SHA384 ) === 1 ) {
@@ -269,7 +269,7 @@ class Base {
 	 *
 	 * @return string[] The array of errors.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	protected function validate_times( object $data ) {
 

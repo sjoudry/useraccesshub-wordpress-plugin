@@ -3,7 +3,7 @@
  * Actions
  *
  * @package useraccesshub
- * @since 1.0
+ * @since 1.0.0
  */
 
 namespace UserAccessHub;
@@ -11,7 +11,7 @@ namespace UserAccessHub;
 /**
  * Actions class.
  *
- * @since 1.0
+ * @since 1.0.0
  */
 final class Actions {
 
@@ -23,7 +23,7 @@ final class Actions {
 	 * @return \WP_User|\WP_Error|NULL
 	 *   The user, an error or NULL depending on the state of the login.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	public function handle_login( $user ) {
 		if ( $user instanceof \WP_User ) {
@@ -50,7 +50,7 @@ final class Actions {
 	/**
 	 * Login CSS.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	public function login_css() {
 		$css_path = dirname( realpath( Plugin::FILE ) ) . '/includes/css/login.css';
@@ -65,7 +65,7 @@ final class Actions {
 	 *
 	 * @return string The altered login message.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	public function login_footer( $message ) {
 		if ( isset( $_GET['action'] ) ) {

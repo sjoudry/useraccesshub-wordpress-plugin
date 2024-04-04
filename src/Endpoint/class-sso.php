@@ -3,7 +3,7 @@
  * Endpoint: SSO
  *
  * @package useraccesshub
- * @since 1.0
+ * @since 1.0.0
  */
 
 namespace UserAccessHub\Endpoint;
@@ -13,14 +13,14 @@ use UserAccessHub\Plugin;
 /**
  * SSO Endpoint class.
  *
- * @since 1.0
+ * @since 1.0.0
  */
 class Sso extends Base {
 
 	/**
 	 * Handle request.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	public function handle_request() {
 

@@ -3,7 +3,7 @@
  * Activation
  *
  * @package useraccesshub
- * @since 1.0
+ * @since 1.0.0
  */
 
 namespace UserAccessHub;
@@ -11,14 +11,14 @@ namespace UserAccessHub;
 /**
  * Activation class.
  *
- * @since 1.0
+ * @since 1.0.0
  */
 final class Activation {
 
 	/**
 	 * Activation.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	public function activation() {
 
