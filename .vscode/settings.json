@@ -1,0 +1,8 @@
+{
+  "phpcs.executablePath": "vendor/bin/phpcs",
+  "phpcs.standard": "WordPress",
+  "phpcs.ignorePatterns": [
+    "./vendor/*"
+  ],
+  "editor.detectIndentation": true,
+}

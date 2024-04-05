@@ -16,6 +16,15 @@ namespace UserAccessHub;
 final class Actions {
 
 	/**
+	 * After Theme Switch.
+	 *
+	 * @since 1.0.2
+	 */
+	public function after_theme_switch() {
+		Plugin::get_instance()->install_rewrites();
+	}
+
+	/**
 	 * Authenticate: Handle Login.
 	 *
 	 * @param \WP_User|\WP_Error|NULL $user The user if authenticated.
@@ -68,8 +77,8 @@ final class Actions {
 	 * @since 1.0.0
 	 */
 	public function login_footer( $message ) {
-		if ( isset( $_GET['action'] ) ) {
-			if ( 'lostpassword' === $_GET['action'] ) {
+		if ( isset( $_GET['action'] ) ) { // phpcs:ignore
+			if ( 'lostpassword' === $_GET['action'] ) { // phpcs:ignore
 				print '<div class="useraccesshub_wrapper">';
 				print '<div class="notice"><p>';
 				print '<b>User Access Hub</b><br/>';

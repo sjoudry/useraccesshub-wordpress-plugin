@@ -48,16 +48,16 @@ class Sso extends Base {
 
 				// Once the user has logged into the User Access Hub and is validated, the hub will post a signed message to the site, signalling that the user is good to go.
 				case 'POST':
-					if ( isset( $_POST['message'] ) ) {
+					if ( isset( $_POST['message'] ) ) { // phpcs:ignore
 
 						// Message is required.
-						$message = wp_kses( wp_unslash( $_POST['message'] ), array() );
+						$message = wp_kses( wp_unslash( $_POST['message'] ), array() ); // phpcs:ignore
 						if ( ! $message ) {
 							$this->error_response_message();
 						}
 
 						// Message needs to be base64 decoded.
-						$message = base64_decode( $message );
+						$message = base64_decode( $message ); // phpcs:ignore
 						if ( ! $message ) {
 							$this->error_response_message();
 						}
@@ -75,7 +75,7 @@ class Sso extends Base {
 							$this->error_response_body( $errors );
 						}
 
-						$signature = base64_decode( $message->signature );
+						$signature = base64_decode( $message->signature ); // phpcs:ignore
 						if ( ! $signature || ! $this->validate_signature( $data, $signature, $authentication[ Plugin::OPTION_PUBLIC_KEY ] ) ) {
 							$this->error_response_signature();
 						}

@@ -55,14 +55,14 @@ final class Settings {
 		// Load the icon.
 		$filesystem = new \WP_Filesystem_Direct( true );
 		$data       = $filesystem->get_contents( dirname( realpath( Plugin::FILE ) ) . '/includes/images/useraccesshub_icon.svg' );
-		$image      = 'data:image/svg+xml;base64,' . base64_encode( $data );
+		$image      = 'data:image/svg+xml;base64,' . base64_encode( $data ); // phpcs:ignore
 
 		add_menu_page( Plugin::OPTIONS_SETTINGS_NAME, Plugin::NAME, Plugin::OPTIONS_CAPABILITY, Plugin::OPTIONS_SETTINGS_SLUG, array( $this, 'settings_page' ), $image );
 		add_submenu_page( Plugin::OPTIONS_SETTINGS_SLUG, Plugin::OPTIONS_ROLES_NAME, Plugin::OPTIONS_ROLES_NAME, Plugin::OPTIONS_CAPABILITY, Plugin::OPTIONS_ROLES_SLUG, array( $this, 'roles_page' ) );
 		add_submenu_page( Plugin::OPTIONS_SETTINGS_SLUG, Plugin::OPTIONS_AUTHENTICATION_NAME, Plugin::OPTIONS_AUTHENTICATION_NAME, Plugin::OPTIONS_CAPABILITY, Plugin::OPTIONS_AUTHENTICATION_SLUG, array( $this, 'authentication_page' ) );
 
 		// Change the parent link title in the submenu.
-		$submenu[ Plugin::SLUG ][0][0] = 'Settings';
+		$submenu[ Plugin::SLUG ][0][0] = 'Settings'; // phpcs:ignore
 	}
 
 	/**

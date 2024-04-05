@@ -16,14 +16,14 @@ namespace UserAccessHub;
 final class Filters {
 
 	/**
-	 * Authenticate: Handle Login.
+	 * Authenticate: Handle Reset.
 	 *
 	 * @param \WP_User|bool $user   The user to reset.
 	 * @param \WP_Error     $errors The errors returned so far from the validation process.
 	 *
 	 * @return \WP_User|bool The user that was passed in.
-   *
-   * @since 1.0.0
+	 *
+	 * @since 1.0.0
 	 */
 	public function handle_reset( $user, \WP_Error $errors ) {
 		if ( $user ) {
@@ -91,6 +91,8 @@ final class Filters {
 			switch ( $endpoint ) {
 				case 'handshake':
 					return plugin_dir_path( Plugin::FILE ) . '/endpoint/handshake.php';
+				case 'packages':
+					return plugin_dir_path( Plugin::FILE ) . '/endpoint/packages.php';
 				case 'roles':
 					return plugin_dir_path( Plugin::FILE ) . '/endpoint/roles.php';
 				case 'sso':

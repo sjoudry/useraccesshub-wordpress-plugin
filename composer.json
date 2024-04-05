@@ -1,0 +1,28 @@
+{
+  "name": "wordpress/useraccesshub",
+  "description": "Plugin to allow user authentication through the User Access Hub.",
+  "type": "wordpress-plugin",
+  "homepage": "https://wordpress.org/plugins/useraccesshub/",
+  "license": "GPL-2.0-or-later",
+  "authors": [
+    {
+      "name": "Scott Joudry",
+      "homepage": "https://www.useraccesshub.com/"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/sjoudry/useraccesshub-wordpress-plugin/issues",
+    "support": "https://wordpress.org/support/plugin/useraccesshub/",
+    "source": "https://github.com/sjoudry/useraccesshub-wordpress-plugin"
+  },
+  "require-dev": {
+      "squizlabs/php_codesniffer": "^3.7",
+      "wp-coding-standards/wpcs": "^2.3"
+
+  },
+  "config": {
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true
+    }
+  }
+}

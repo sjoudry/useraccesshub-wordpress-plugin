@@ -1,5 +1,11 @@
 # Changelog
 
+## User Access Hub 1.0.2, 2024-XX-XX
+
+- Added /spoke/api/packages endpoint to allow the hub to pull core/module/theme data.
+- Fixed issue with rewrites being lost when switching themes.
+- Added some functionality (phpcs, etc).
+
 ## User Access Hub 1.0.1, 2024-04-03
 
 - Removed type hint on class-plugin.php so it works in PHP 7.0.

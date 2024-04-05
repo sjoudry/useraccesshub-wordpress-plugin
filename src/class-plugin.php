@@ -291,6 +291,20 @@ final class Plugin {
 	}
 
 	/**
+	 * Install Rewrites.
+	 *
+	 * Add endpoint routes.
+	 *
+	 * @since 1.0.2
+	 */
+	public function install_rewrites() {
+
+		// Handle routing for all custom endpoint URL's.
+		add_rewrite_rule( '^spoke/api/([^/]*)', 'index.php?' . PLUGIN::QUERY_ENDPOINT . '=$matches[1]', 'top' );
+		flush_rewrite_rules();
+	}
+
+	/**
 	 * Register Activation Hook.
 	 *
 	 * @since 1.0.0
@@ -321,6 +335,7 @@ final class Plugin {
 		add_action( 'admin_menu', array( $settings, 'add_settings_pages' ) );
 
 		$actions = new Actions();
+		add_action( 'after_switch_theme', array( $actions, 'after_theme_switch' ), 10, 0 );
 		add_action( 'authenticate', array( $actions, 'handle_login' ), 20 );
 		add_action( 'login_enqueue_scripts', array( $actions, 'login_css' ) );
 		add_action( 'login_footer', array( $actions, 'login_footer' ) );

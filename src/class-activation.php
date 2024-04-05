@@ -21,10 +21,7 @@ final class Activation {
 	 * @since 1.0.0
 	 */
 	public function activation() {
-
-		// Handle routing for all custom endpoint URL's.
-		add_rewrite_rule( '^spoke/api/([^/]*)', 'index.php?' . PLUGIN::QUERY_ENDPOINT . '=$matches[1]', 'top' );
-		flush_rewrite_rules();
+		Plugin::get_instance()->install_rewrites();
 
 		// Add some default options.
 		$options = array(
