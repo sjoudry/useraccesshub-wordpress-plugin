@@ -3,7 +3,7 @@
  * Plugin Name:  User Access Hub
  * Plugin URI:   https://www.useraccesshub.com
  * Description:  Plugin to allow user authentication through the User Access Hub.
- * Version:      1.0.1
+ * Version:      1.0.2
  * Author:       Scott Joudry
  * Author URI:   https://profiles.wordpress.org/sjoudry/
  * License:      GPL2
