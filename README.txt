@@ -4,7 +4,7 @@ Donate link: https://www.useraccesshub.com/
 Tags: admin, administration, authentication
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
-Stable Tag: 1.0.1
+Stable Tag: 1.0.2
 Tested up to: 6.4
 Requires PHP: 7.0
 

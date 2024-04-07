@@ -1,6 +1,6 @@
 # Changelog
 
-## User Access Hub 1.0.2, 2024-XX-XX
+## User Access Hub 1.0.2, 2024-04-07
 
 - Added /spoke/api/packages endpoint to allow the hub to pull core/module/theme data.
 - Fixed issue with rewrites being lost when switching themes.
