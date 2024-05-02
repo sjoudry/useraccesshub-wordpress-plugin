@@ -26,6 +26,13 @@ The User Access Hub is a service that allows administrators to manage users, use
 
 [Create a free account to get started.](https://www.useraccesshub.com/)
 
+### Additional features
+
+- Drupal CMS support
+- Core Updates Reporting
+- Plugin Updates Reporting
+- Theme Updates Reporting
+
 ## Requirements
 
 - This plugin requires the openssl_verify() PHP function, which is part of the [OpenSSL library](https://www.php.net/manual/en/book.openssl.php) for PHP.
@@ -39,8 +46,44 @@ The User Access Hub is a service that allows administrators to manage users, use
 1. In the hub, use the 'Connect' operation to allow the hub to handshake with the site. Once this is complete, settings on User Access Hub > Authentication will be updated - 'Private Key' will be populated, 'Site ID' will be populated and the 'Enabled the Handshake Endpoint' checkbox will be unchecked.
 1. To enable all User Access Hub functionality, the final step is to check the 'Enable all of the User Access Hub functionality.' checkbox on User Access Hub > Settings.
 
+## Overriding Configuration
+
+In many cases, the configuration that exists in the database will need to be overridden. The case of different config values for different environments springs to mind. This can be accomplished by overriding the configuration in a wp-config.php file:
+
+```php
+define( 'USERACCESSHUB_ALLOW_LOCAL', true );
+define( 'USERACCESSHUB_API_KEY', 'string' );
+define( 'USERACCESSHUB_DEFAULT_ROLE', 'role' );
+define( 'USERACCESSHUB_ENABLED', true );
+define( 'USERACCESSHUB_HANDSHAKE_ENABLED', true );
+define( 'USERACCESSHUB_PUBLIC_KEY', 'string' );
+define( 'USERACCESSHUB_REDIRECT', '/redirect/url' );
+define( 'USERACCESSHUB_ROLES', array( 'role1', 'role2' ) );
+define( 'USERACCESSHUB_SITE_ID', 1 );
+```
+
 ## Commands
 
-1. Enable Handshake - this WP CLI command will enable the handshake endpoint so a site can be reconnected with the Hub.
-1. Disable Handshake - this WP CLI command will disable the handshake endpoint.
-1. Regenerate API Key - this WP CLI command will re-generate the API key used for the handshake.
+### Enable Handshake
+
+This WP CLI command will enable the handshake endpoint so a site can be reconnected with the Hub.
+
+```bash
+wp enable-handshake
+```
+
+### Disable Handshake
+
+This WP CLI command will disable the handshake endpoint.
+
+```bash
+wp disable-handshake
+```
+
+### Regenerate API Key
+
+This WP CLI command will re-generate the API key used for the handshake.
+
+```bash
+wp regenerate-api-key
+```
