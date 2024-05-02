@@ -50,7 +50,7 @@ The User Access Hub is a service that allows administrators to manage users, use
 
 In many cases, the configuration that exists in the database will need to be overridden. The case of different config values for different environments springs to mind. This can be accomplished by overriding the configuration in a wp-config.php file:
 
-```php
+```
 define( 'USERACCESSHUB_ALLOW_LOCAL', true );
 define( 'USERACCESSHUB_API_KEY', 'string' );
 define( 'USERACCESSHUB_DEFAULT_ROLE', 'role' );
@@ -68,7 +68,7 @@ define( 'USERACCESSHUB_SITE_ID', 1 );
 
 This WP CLI command will enable the handshake endpoint so a site can be reconnected with the Hub.
 
-```bash
+```
 wp enable-handshake
 ```
 
@@ -76,7 +76,7 @@ wp enable-handshake
 
 This WP CLI command will disable the handshake endpoint.
 
-```bash
+```
 wp disable-handshake
 ```
 
@@ -84,6 +84,6 @@ wp disable-handshake
 
 This WP CLI command will re-generate the API key used for the handshake.
 
-```bash
+```
 wp regenerate-api-key
 ```
