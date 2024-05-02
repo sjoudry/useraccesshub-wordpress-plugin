@@ -24,13 +24,8 @@ class Sso extends Base {
 	 */
 	public function handle_request() {
 
-		// Load settings.
-		$authentication = get_option( Plugin::OPTIONS_AUTHENTICATION );
-		$role_options   = get_option( Plugin::OPTIONS_ROLES );
-		$settings       = get_option( Plugin::OPTIONS_SETTINGS );
-
 		// Only proceed with the login if the plugin functionality is enabled.
-		if ( empty( $settings[ Plugin::OPTION_ENABLED ] ) ) {
+		if ( empty( Options::enabled() ) ) {
 			$this->error_response_login();
 		}
 
@@ -76,7 +71,7 @@ class Sso extends Base {
 						}
 
 						$signature = base64_decode( $message->signature ); // phpcs:ignore
-						if ( ! $signature || ! $this->validate_signature( $data, $signature, $authentication[ Plugin::OPTION_PUBLIC_KEY ] ) ) {
+						if ( ! $signature || ! $this->validate_signature( $data, $signature, Options::public_key() ) ) {
 							$this->error_response_signature();
 						}
 
@@ -89,7 +84,7 @@ class Sso extends Base {
 						if ( $user ) {
 
 							// If local accounts are allowed, don't change anything about the user (except adding the role below).
-							if ( empty( $role_options[ Plugin::OPTION_ALLOW_LOCAL ] ) ) {
+							if ( empty( Options::allow_local() ) ) {
 
 								// Reset the roles of the user.
 								$roles = $user->roles;
@@ -108,7 +103,7 @@ class Sso extends Base {
 						// Set the roles.
 						foreach ( $message->data->roles as $role ) {
 							if ( 0 === $role ) {
-								$role = $role_options[ Plugin::OPTION_DEFAULT_ROLE ];
+								$role = Options::default_role();
 							}
 							$user->add_role( $role );
 						}
@@ -120,7 +115,7 @@ class Sso extends Base {
 						wp_set_auth_cookie( $user->ID );
 
 						// Redirect.
-						$redirect = empty( $settings[ Plugin::OPTION_REDIRECT ] ) ? '/' : $settings[ Plugin::OPTION_REDIRECT ];
+						$redirect = empty( Options::redirect() ) ? '/' : Options::redirect();
 						header( 'Location: ' . $redirect );
 						exit();
 					}

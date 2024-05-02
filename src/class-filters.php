@@ -27,15 +27,11 @@ final class Filters {
 	 */
 	public function handle_reset( $user, \WP_Error $errors ) {
 		if ( $user ) {
-
-			// Load settings.
-			$settings = get_option( Plugin::OPTIONS_SETTINGS );
-			$roles    = get_option( Plugin::OPTIONS_ROLES );
-			if ( ! empty( $settings[ Plugin::OPTION_ENABLED ] ) ) {
+			if ( ! empty( Options::enabled() ) ) {
 
 				// Prevent password retrieval if the user has a role that is managed by User Access Hub, unless local accounts are allowed.
-				if ( empty( $roles[ Plugin::OPTION_ALLOW_LOCAL ] ) ) {
-					$managed_roles = array_intersect( $roles[ Plugin::OPTION_ROLES ], $user->roles );
+				if ( empty( Options::allow_local() ) ) {
+					$managed_roles = array_intersect( Options::roles(), $user->roles );
 					if ( count( $managed_roles ) ) {
 						$errors->add( 'useraccesshub', 'Password retrieval for this user must be done using User Access Hub.' );
 					}

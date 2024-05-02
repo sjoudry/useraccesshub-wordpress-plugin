@@ -23,11 +23,6 @@ class Packages extends Base {
 	 * @since 1.0.2
 	 */
 	public function handle_request() {
-
-		// Load settings.
-		$authentication = get_option( Plugin::OPTIONS_AUTHENTICATION );
-		$roles          = get_option( Plugin::OPTIONS_ROLES );
-
 		if ( ! $this->validate_method( array( 'POST' ) ) ) {
 			$this->error_response_method();
 		}
@@ -38,7 +33,7 @@ class Packages extends Base {
 
 		$body      = wp_kses( file_get_contents( 'php://input' ), array() );
 		$signature = base64_decode( wp_kses( wp_unslash( $_SERVER['HTTP_SIGNATURE'] ), array() ) ); // phpcs:ignore
-		if ( ! $signature || ! $this->validate_signature( $body, $signature, $authentication[ Plugin::OPTION_PUBLIC_KEY ] ) ) {
+		if ( ! $signature || ! $this->validate_signature( $body, $signature, Options::public_key() ) ) {
 			$this->error_response_signature();
 		}
 

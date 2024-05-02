@@ -36,16 +36,12 @@ final class Actions {
 	 */
 	public function handle_login( $user ) {
 		if ( $user instanceof \WP_User ) {
-
-			// Load settings.
-			$settings = get_option( Plugin::OPTIONS_SETTINGS );
-			$roles    = get_option( Plugin::OPTIONS_ROLES );
-			if ( ! empty( $settings[ Plugin::OPTION_ENABLED ] ) ) {
+			if ( ! empty( Options::enabled() ) ) {
 
 				// Prevent login if the user has a role that is managed by User Access Hub,
 				// unless local accounts are allowed.
-				if ( empty( $roles[ Plugin::OPTION_ALLOW_LOCAL ] ) ) {
-					$managed_roles = array_intersect( $roles[ Plugin::OPTION_ROLES ], $user->roles );
+				if ( empty( Options::allow_local() ) ) {
+					$managed_roles = array_intersect( Options::roles(), $user->roles );
 					if ( count( $managed_roles ) ) {
 						return new \WP_Error( 'useraccesshub', 'This user must login using User Access Hub.' );
 					}

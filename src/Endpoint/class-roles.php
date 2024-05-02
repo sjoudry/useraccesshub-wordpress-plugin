@@ -23,11 +23,6 @@ class Roles extends Base {
 	 * @since 1.0.0
 	 */
 	public function handle_request() {
-
-		// Load settings.
-		$authentication = get_option( Plugin::OPTIONS_AUTHENTICATION );
-		$roles          = get_option( Plugin::OPTIONS_ROLES );
-
 		if ( ! $this->validate_method( array( 'POST' ) ) ) {
 			$this->error_response_method();
 		}
@@ -38,7 +33,7 @@ class Roles extends Base {
 
 		$body      = wp_kses( file_get_contents( 'php://input' ), array() );
 		$signature = base64_decode( wp_kses( wp_unslash( $_SERVER['HTTP_SIGNATURE'] ), array() ) ); // phpcs:ignore
-		if ( ! $signature || ! $this->validate_signature( $body, $signature, $authentication[ Plugin::OPTION_PUBLIC_KEY ] ) ) {
+		if ( ! $signature || ! $this->validate_signature( $body, $signature, Options::public_key() ) ) {
 			$this->error_response_signature();
 		}
 
@@ -47,7 +42,7 @@ class Roles extends Base {
 			$this->error_response_times();
 		}
 
-		$managed_roles = empty( $roles[ Plugin::OPTION_ROLES ] ) ? array() : $roles[ Plugin::OPTION_ROLES ];
+		$managed_roles = empty( Options::roles() ) ? array() : Options::roles();
 		$this->response( array( 'roles' => $this->get_roles( $managed_roles ) ), 200 );
 	}
 }

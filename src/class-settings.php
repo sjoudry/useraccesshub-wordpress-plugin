@@ -102,10 +102,8 @@ final class Settings {
 	 * @since 1.0.0
 	 */
 	public function option_allow_local() {
-		$options = get_option( Plugin::OPTIONS_ROLES );
-
 		print '<input id="' . esc_attr( Plugin::OPTION_ALLOW_LOCAL ) . '" name="' . esc_attr( Plugin::OPTIONS_ROLES . '[' . Plugin::OPTION_ALLOW_LOCAL . ']' ) . '" type="checkbox"';
-		if ( ! empty( $options[ Plugin::OPTION_ALLOW_LOCAL ] ) ) {
+		if ( ! empty( Options::allow_local() ) ) {
 			print ' checked="checked"';
 		}
 		print ' />';
@@ -117,8 +115,7 @@ final class Settings {
 	 * @since 1.0.0
 	 */
 	public function option_api_key() {
-		$options = get_option( Plugin::OPTIONS_AUTHENTICATION );
-		$api_key = empty( $options[ Plugin::OPTION_API_KEY ] ) ? '' : $options[ Plugin::OPTION_API_KEY ];
+		$api_key = empty( Options::api_key() ) ? '' : Options::api_key();
 
 		print '<input id="' . esc_attr( Plugin::OPTION_API_KEY ) . '" name="' . esc_attr( Plugin::OPTIONS_AUTHENTICATION . '[' . Plugin::OPTION_API_KEY . ']' ) . '" type="text" value="' . esc_attr( $api_key ) . '" disabled="disabled" class="large-text" />';
 		print '<p class="description">The API key is generated on plugin activation. This API key is only used during the handshake process between the User Access Hub and this site. Once the handshake is complete the public key below is used during communication between the two. This value can be regenerated using the WP CLI.</p>';
@@ -132,8 +129,7 @@ final class Settings {
 	public function option_default_role() {
 		global $wp_roles;
 
-		$options      = get_option( Plugin::OPTIONS_ROLES );
-		$default_role = empty( $options[ Plugin::OPTION_DEFAULT_ROLE ] ) ? 'editor' : $options[ Plugin::OPTION_DEFAULT_ROLE ];
+		$default_role = empty( Options::default_role() ) ? 'editor' : Options::default_role();
 
 		print '<select id="' . esc_attr( Plugin::OPTION_DEFAULT_ROLE ) . '" name="' . esc_attr( Plugin::OPTIONS_ROLES . '[' . Plugin::OPTION_DEFAULT_ROLE . ']' ) . '">';
 		foreach ( $wp_roles->roles as $role_id => $wp_role ) {
@@ -153,10 +149,8 @@ final class Settings {
 	 * @since 1.0.0
 	 */
 	public function option_enabled() {
-		$options = get_option( Plugin::OPTIONS_SETTINGS );
-
 		print '<input id="' . esc_attr( Plugin::OPTION_ENABLED ) . '" name="' . esc_attr( Plugin::OPTIONS_SETTINGS . '[' . Plugin::OPTION_ENABLED . ']' ) . '" type="checkbox"';
-		if ( ! empty( $options[ Plugin::OPTION_ENABLED ] ) ) {
+		if ( ! empty( Options::enabled() ) ) {
 			print ' checked="checked"';
 		}
 		print ' />';
@@ -169,10 +163,8 @@ final class Settings {
 	 * @since 1.0.0
 	 */
 	public function option_handshake_enabled() {
-		$options = get_option( Plugin::OPTIONS_AUTHENTICATION );
-
 		print '<input id="' . esc_attr( Plugin::OPTION_HANDSHAKE_ENABLED ) . '" name="' . esc_attr( Plugin::OPTIONS_AUTHENTICATION . '[' . Plugin::OPTION_HANDSHAKE_ENABLED . ']' ) . '" type="checkbox"';
-		if ( ! empty( $options[ Plugin::OPTION_HANDSHAKE_ENABLED ] ) ) {
+		if ( ! empty( Options::handshake_enabled() ) ) {
 			print ' checked="checked"';
 		}
 		print ' disabled="disabled" />';
@@ -185,8 +177,7 @@ final class Settings {
 	 * @since 1.0.0
 	 */
 	public function option_public_key() {
-		$options    = get_option( Plugin::OPTIONS_AUTHENTICATION );
-		$public_key = empty( $options[ Plugin::OPTION_PUBLIC_KEY ] ) ? '' : $options[ Plugin::OPTION_PUBLIC_KEY ];
+		$public_key = empty( Options::public_key() ) ? '' : Options::public_key();
 
 		print '<textarea id="' . esc_attr( Plugin::OPTION_PUBLIC_KEY ) . '" name="' . esc_attr( Plugin::OPTIONS_AUTHENTICATION . '[' . Plugin::OPTION_PUBLIC_KEY . ']' ) . '" disabled="disabled" style="resize:none" cols="40" rows="5" class="large-text">' . esc_html( $public_key ) . '</textarea>';
 		print '<p class="description">The public key is set during the handshake process between the User Access Hub and this site and is used for all communication between this site and the User Access Hub.</p>';
@@ -198,8 +189,7 @@ final class Settings {
 	 * @since 1.0.0
 	 */
 	public function option_redirect() {
-		$options  = get_option( Plugin::OPTIONS_SETTINGS );
-		$redirect = empty( $options[ Plugin::OPTION_REDIRECT ] ) ? '' : $options[ Plugin::OPTION_REDIRECT ];
+		$redirect = empty( Options::redirect() ) ? '' : Options::redirect();
 
 		print '<input id="' . esc_attr( Plugin::OPTION_REDIRECT ) . '" name="' . esc_attr( Plugin::OPTIONS_SETTINGS . '[' . Plugin::OPTION_REDIRECT . ']' ) . '" type="text" value="' . esc_attr( $redirect ) . '" class="regular-text" />';
 		print '<p class="description">Where to redirect the user after a login, including a preceeding /. For example: /welcome.</p>';
@@ -213,8 +203,7 @@ final class Settings {
 	public function option_roles() {
 		global $wp_roles;
 
-		$options = get_option( Plugin::OPTIONS_ROLES );
-		$roles   = empty( $options[ Plugin::OPTION_ROLES ] ) ? array() : $options[ Plugin::OPTION_ROLES ];
+		$roles = empty( Options::roles() ) ? array() : Options::roles();
 
 		foreach ( $wp_roles->roles as $role_id => $wp_role ) {
 			print '<p><input id="' . esc_attr( Plugin::OPTION_ROLES . '-' . $role_id ) . '" name="' . esc_attr( Plugin::OPTIONS_ROLES . '[' . Plugin::OPTION_ROLES . '][]' ) . '" value="' . esc_attr( $role_id ) . '" type="checkbox"';
@@ -232,8 +221,7 @@ final class Settings {
 	 * @since 1.0.0
 	 */
 	public function option_site_id() {
-		$options = get_option( Plugin::OPTIONS_AUTHENTICATION );
-		$site_id = empty( $options[ Plugin::OPTION_SITE_ID ] ) ? '' : $options[ Plugin::OPTION_SITE_ID ];
+		$site_id = empty( Options::site_id() ) ? '' : Options::site_id();
 
 		print '<input id="' . esc_attr( Plugin::OPTION_SITE_ID ) . '" name="' . esc_attr( Plugin::OPTIONS_AUTHENTICATION . '[' . Plugin::OPTION_SITE_ID . ']' ) . '" type="text" value="' . esc_attr( $site_id ) . '" disabled="disabled" class="small-text" />';
 		print '<p class="description">The site ID is the unique identifier for this site in the User Access Hub and is using during communication between the and this site. This value is set during the handshake process between the two.</p>';

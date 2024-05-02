@@ -26,10 +26,9 @@ class Handshake extends Base {
 
 		// Load settings.
 		$authentication = get_option( Plugin::OPTIONS_AUTHENTICATION );
-		$roles          = get_option( Plugin::OPTIONS_ROLES );
 
 		// Only proceed if handshakes are enabled.
-		if ( empty( $authentication[ Plugin::OPTION_HANDSHAKE_ENABLED ] ) ) {
+		if ( empty( Options::handshake_enabled() ) ) {
 			$this->error_response_handshake();
 		}
 
@@ -37,7 +36,7 @@ class Handshake extends Base {
 			$this->error_response_method();
 		}
 
-		if ( ! $this->validate_api_key( $authentication[ Plugin::OPTION_API_KEY ] ) ) {
+		if ( ! $this->validate_api_key( Options::api_key() ) ) {
 			$this->error_response_key();
 		}
 
@@ -54,7 +53,7 @@ class Handshake extends Base {
 		$authentication[ Plugin::OPTION_HANDSHAKE_ENABLED ] = '';
 		update_option( Plugin::OPTIONS_AUTHENTICATION, $authentication );
 
-		$managed_roles = empty( $roles[ Plugin::OPTION_ROLES ] ) ? array() : $roles[ Plugin::OPTION_ROLES ];
+		$managed_roles = empty( Options::roles() ) ? array() : Options::roles();
 		$this->response( array( 'roles' => $this->get_roles( $managed_roles ) ), 200 );
 	}
 }
