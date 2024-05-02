@@ -16,6 +16,34 @@ namespace UserAccessHub;
 final class Filters {
 
 	/**
+	 * Authenticate: Handle Login.
+	 *
+	 * @param \WP_User|\WP_Error|NULL $user The user if authenticated.
+	 *
+	 * @return \WP_User|\WP_Error|NULL
+	 *   The user, an error or NULL depending on the state of the login.
+	 *
+	 * @since 1.0.0
+	 */
+	public function handle_login( $user ) {
+		if ( $user instanceof \WP_User ) {
+			if ( ! empty( Options::enabled() ) ) {
+
+				// Prevent login if the user has a role that is managed by User Access Hub,
+				// unless local accounts are allowed.
+				if ( empty( Options::allow_local() ) ) {
+					$managed_roles = array_intersect( Options::roles(), $user->roles );
+					if ( count( $managed_roles ) ) {
+						return new \WP_Error( 'useraccesshub', 'This user must login using User Access Hub.' );
+					}
+				}
+			}
+		}
+
+		return $user;
+	}
+
+	/**
 	 * Authenticate: Handle Reset.
 	 *
 	 * @param \WP_User|bool $user   The user to reset.

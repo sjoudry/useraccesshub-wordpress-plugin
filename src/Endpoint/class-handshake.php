@@ -8,6 +8,7 @@
 
 namespace UserAccessHub\Endpoint;
 
+use UserAccessHub\Options;
 use UserAccessHub\Plugin;
 
 /**

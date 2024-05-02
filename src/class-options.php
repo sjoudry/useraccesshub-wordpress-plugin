@@ -23,7 +23,7 @@ final class Options {
 	 * @since 1.0.3
 	 */
 	public static function allow_local() {
-		return $this->determine_option_value( Plugin::OPTIONS_ROLES, Plugin::OPTION_ALLOW_LOCAL, 'USERACCESSHUB_ALLOW_LOCAL' );
+		return self::determine_option_value( Plugin::OPTIONS_ROLES, Plugin::OPTION_ALLOW_LOCAL, 'USERACCESSHUB_ALLOW_LOCAL' );
 	}
 
 	/**
@@ -34,7 +34,7 @@ final class Options {
 	 * @since 1.0.3
 	 */
 	public static function api_key() {
-		return $this->determine_option_value( Plugin::OPTIONS_AUTHENTICATION, Plugin::OPTION_API_KEY, 'USERACCESSHUB_API_KEY' );
+		return self::determine_option_value( Plugin::OPTIONS_AUTHENTICATION, Plugin::OPTION_API_KEY, 'USERACCESSHUB_API_KEY' );
 	}
 
 	/**
@@ -45,7 +45,7 @@ final class Options {
 	 * @since 1.0.3
 	 */
 	public static function default_role() {
-		return $this->determine_option_value( Plugin::OPTIONS_ROLES, Plugin::OPTION_DEFAULT_ROLE, 'USERACCESSHUB_DEFAULT_ROLE' );
+		return self::determine_option_value( Plugin::OPTIONS_ROLES, Plugin::OPTION_DEFAULT_ROLE, 'USERACCESSHUB_DEFAULT_ROLE' );
 	}
 
 	/**
@@ -56,7 +56,7 @@ final class Options {
 	 * @since 1.0.3
 	 */
 	public static function enabled() {
-		return $this->determine_option_value( Plugin::OPTIONS_SETTINGS, Plugin::OPTION_ENABLED, 'USERACCESSHUB_ENABLED' );
+		return self::determine_option_value( Plugin::OPTIONS_SETTINGS, Plugin::OPTION_ENABLED, 'USERACCESSHUB_ENABLED' );
 	}
 
 	/**
@@ -67,7 +67,7 @@ final class Options {
 	 * @since 1.0.3
 	 */
 	public static function handshake_enabled() {
-		return $this->determine_option_value( Plugin::OPTIONS_AUTHENTICATION, Plugin::OPTION_HANDSHAKE_ENABLED, 'USERACCESSHUB_HANDSHAKE_ENABLED' );
+		return self::determine_option_value( Plugin::OPTIONS_AUTHENTICATION, Plugin::OPTION_HANDSHAKE_ENABLED, 'USERACCESSHUB_HANDSHAKE_ENABLED' );
 	}
 
 	/**
@@ -78,7 +78,7 @@ final class Options {
 	 * @since 1.0.3
 	 */
 	public static function public_key() {
-		return $this->determine_option_value( Plugin::OPTIONS_AUTHENTICATION, Plugin::OPTION_PUBLIC_KEY, 'USERACCESSHUB_PUBLIC_KEY' );
+		return self::determine_option_value( Plugin::OPTIONS_AUTHENTICATION, Plugin::OPTION_PUBLIC_KEY, 'USERACCESSHUB_PUBLIC_KEY' );
 	}
 
 	/**
@@ -89,7 +89,7 @@ final class Options {
 	 * @since 1.0.3
 	 */
 	public static function redirect() {
-		return $this->determine_option_value( Plugin::OPTIONS_SETTINGS, Plugin::OPTION_REDIRECT, 'USERACCESSHUB_REDIRECT' );
+		return self::determine_option_value( Plugin::OPTIONS_SETTINGS, Plugin::OPTION_REDIRECT, 'USERACCESSHUB_REDIRECT' );
 	}
 
 	/**
@@ -100,7 +100,7 @@ final class Options {
 	 * @since 1.0.3
 	 */
 	public static function roles() {
-		return $this->determine_option_value( Plugin::OPTIONS_ROLES, Plugin::OPTION_ROLES, 'USERACCESSHUB_ROLES' );
+		return self::determine_option_value( Plugin::OPTIONS_ROLES, Plugin::OPTION_ROLES, 'USERACCESSHUB_ROLES' );
 	}
 
 	/**
@@ -111,11 +111,11 @@ final class Options {
 	 * @since 1.0.3
 	 */
 	public static function site_id() {
-		return $this->determine_option_value( Plugin::OPTIONS_AUTHENTICATION, Plugin::OPTION_SITE_ID, 'USERACCESSHUB_SITE_ID' );
+		return self::determine_option_value( Plugin::OPTIONS_AUTHENTICATION, Plugin::OPTION_SITE_ID, 'USERACCESSHUB_SITE_ID' );
 	}
 
 	/**
-	 * Get Option Value.
+	 * Determine Option Value.
 	 *
 	 * @param string $options_name  The name of the options set.
 	 * @param string $option_name   The name of the option in the set.
@@ -125,7 +125,7 @@ final class Options {
 	 *
 	 * @since 1.0.3
 	 */
-	private static function get_option_value( $options_name, $option_name, $override_name ) {
+	private static function determine_option_value( $options_name, $option_name, $override_name ) {
 		if ( defined( $override_name ) ) {
 			return constant( $override_name );
 		} else {

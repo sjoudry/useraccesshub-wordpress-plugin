@@ -300,7 +300,7 @@ final class Plugin {
 	public function install_rewrites() {
 
 		// Handle routing for all custom endpoint URL's.
-		add_rewrite_rule( '^spoke/api/([^/]*)', 'index.php?' . PLUGIN::QUERY_ENDPOINT . '=$matches[1]', 'top' );
+		add_rewrite_rule( '^spoke/api/([^/]*)', 'index.php?' . self::QUERY_ENDPOINT . '=$matches[1]', 'top' );
 		flush_rewrite_rules();
 	}
 
@@ -336,7 +336,6 @@ final class Plugin {
 
 		$actions = new Actions();
 		add_action( 'after_switch_theme', array( $actions, 'after_theme_switch' ), 10, 0 );
-		add_action( 'authenticate', array( $actions, 'handle_login' ), 20 );
 		add_action( 'login_enqueue_scripts', array( $actions, 'login_css' ) );
 		add_action( 'login_footer', array( $actions, 'login_footer' ) );
 	}
@@ -348,6 +347,7 @@ final class Plugin {
 	 */
 	private function register_filters() {
 		$filters = new Filters();
+		add_filter( 'authenticate', array( $filters, 'handle_login' ), 20 );
 		add_filter( 'plugin_action_links_' . self::SLUG . '/' . self::SLUG . '.php', array( $filters, 'settings_link' ) );
 		add_filter( 'query_vars', array( $filters, 'query_vars' ) );
 		add_filter( 'template_include', array( $filters, 'template_include' ) );
