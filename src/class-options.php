@@ -130,7 +130,7 @@ final class Options {
 			return constant( $override_name );
 		} else {
 			$options = get_option( $options_name );
-			return $options[ $option_name ];
+			return isset( $options[ $option_name ] ) ? $options[ $option_name ] : '';
 		}
 	}
 
